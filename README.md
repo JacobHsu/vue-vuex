@@ -18,3 +18,5 @@ vue create hello-vuex
 > Vuex 通過 store 選項，提供了一種機制將狀態從根組件“注入”到每一個子組件中（需調用 Vue.use(Vuex)）  
 [Getter](https://vuex.vuejs.org/zh/guide/getters.html)  
 > Vuex 允許我們在 store 中定義“getter”（可以認為是 store 的計算屬性）
+[Mutation](https://vuex.vuejs.org/zh/guide/mutations.html)  
+> 更改 Vuex 的 store 中的狀態的唯一方法是提交 mutation。調用此函數。”要喚醒一個 mutation handler，你需要以相應的 type 調用 `store.commit` 方法
