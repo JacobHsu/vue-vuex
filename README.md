@@ -10,3 +10,8 @@ Vuex 是一個專為 Vue.js 應用程序開發的狀態管理模式。它採用�
 `npm run serve`  
 
 vue create hello-vuex
+
+[安装 Vuex](https://vuex.vuejs.org/zh/installation.html)  
+`npm install vuex --save`  
+
+[Vuex 最简单的 Store](https://vuex.vuejs.org/zh/guide/)  

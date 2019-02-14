@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    clean
+    成功console印出this.$store.state.count的值為0
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   name: 'app',
   created() {
-     console.log('打印出console.log');
+    console.log('打印出this.$store.state.count的结果',this.$store.state.count);
   },
 }
 </script>
