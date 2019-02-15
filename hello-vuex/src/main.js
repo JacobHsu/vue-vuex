@@ -6,8 +6,27 @@ Vue.config.productionTip = false;
 
 Vue.use(Vuex);
 
+const pageA = {
+  state: {
+    count: 100
+  },
+  mutations: {
+    incrementA(state) {
+      state.count++;
+    }
+  },
+  actions: {
+    incrementAAction(context) {
+      context.commit("incrementA");
+    }
+  }
+};
+
 let store = new Vuex.Store(
   {
+    modules: {
+      a: pageA
+    },
     state: {
       count: 0
     },

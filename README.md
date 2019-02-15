@@ -2,7 +2,7 @@
 
 Vuex 是一個專為 Vue.js 應用程序開發的狀態管理模式。它採用集中式存儲管理應用的所有組件的狀態，並以相應的規則保證狀態以一種可預測的方式發生變化。
 
-1.使用vue腳手架創建一個簡單的vue項目
+使用vue腳手架創建一個簡單的vue項目
 
 [Vue CLI 3](https://cli.vuejs.org/)  [creating-a-project](https://cli.vuejs.org/zh/guide/creating-a-project.html)  
 `vue create hello-vuex`  
@@ -25,3 +25,10 @@ vue create hello-vuex
 
 [Action](https://vuex.vuejs.org/zh/guide/actions.html)  
 > Action 類似於 mutation，不同在於：Action 提交的是 mutation，而不是直接變更狀態。Action 可以包含任意異步操作。
+
+[Module](https://vuex.vuejs.org/zh/guide/modules.html)  
+> 由於使用單一狀態樹，應用的所有狀態會集中到一個比較大的對象。當應用變得非常複雜時，store 對象就有可能變得相當臃腫。為瞭解決以上問題，Vuex 允許我們將 store 分割成模塊（module）。每個模塊擁有自己的 state、mutation、action、getter  
+
+### References
+
+[build-your-own-vuex](https://github.com/jackiewillen/blog/issues/18)  
