@@ -75,7 +75,23 @@ ERROR Deployer not found: git
 https://jacobhsu.github.io/vue-vuex  
 
 `$doc> hexo s`  
-http://localhost:4000/vue-vuex/
+http://localhost:4000/vue-vuex/   
+
+
+doc\source\_data \navigation.yaml
+```js
+  "logo": {
+    "text": "Hello Vuex",
+    "type": "link",
+    "path": "index.html"
+  },
+```
+
+### debug 
+The tag swagger_to_html on line 6 in `swagger/to-html.md` is not a recognized Liquid tag. 
+
+移除 github 不支持的特殊語法  
+
 
 ### References
 
