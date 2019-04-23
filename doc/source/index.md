@@ -1,6 +1,8 @@
 title: hexo-theme-doc-seed
 ---
 
+vuex [Installation](https://vuex.vuejs.org/installation.html)
+
 # hexo-theme-doc-seed
 
 This project is a skeleton for a documentation website using [Hexo](https://hexo.io) and [hexo-theme-doc](https://github.com/zalando-incubator/hexo-theme-doc).   

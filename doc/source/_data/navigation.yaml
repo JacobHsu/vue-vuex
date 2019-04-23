@@ -6,6 +6,19 @@
   },
   "main": [
     {
+      "text": "Core Concepts",
+      "type": "label"
+    },
+    {
+      "text": "State",
+      "type": "link",
+      "path": "state.html"
+    },
+    {
+      "text": "SWAGGER",
+      "type": "label"
+    },
+    {
       "text": "SWAGGER",
       "type": "label"
     },
