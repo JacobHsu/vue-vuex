@@ -9,6 +9,7 @@ Vuex 使用**單一狀態樹**——是的，用一個對象就包含了全部�
 由於 Vuex 的狀態存儲是響應式的，從 store 實例中讀取狀態最簡單的方法就是在`計算屬性computed`中返回某個狀態
 
 https://jsbin.com/qocogojose/edit?html,output
+https://jsbin.com/muxodoziba/edit?html,js,output
 
 Vuex 通過 `store` 選項，提供了一種機制將狀態從根組件“注入”到每一個子組件中（需調用 `Vue.use(Vuex)`）
 
@@ -42,3 +43,51 @@ const Counter = {
 # mapState 輔助函數
 
 當一個組件需要獲取多個狀態時候，將這些狀態都聲明為計算屬性會有些重複和冗餘。為瞭解決這個問題，我們可以使用 `mapState` 輔助函數幫助我們生成計算屬性，讓你少按幾次鍵：
+
+https://scrimba.com/c/c6g8R6f9
+
+```js
+import Vue from 'vue';
+import Vuex from 'vuex';
+
+Vue.use(Vuex);
+
+const store = new Vuex.Store({
+    state: {
+        count: 3
+    }
+});
+
+import { mapState } from 'vuex';
+
+new Vue({ 
+    el: '#app',
+    store,
+    data: {
+        localCount: 4
+    },
+    computed: mapState([
+        'count'
+    ])
+});
+```
+
+
+##　對象展開運算符
+
+`mapState` 函數返回的是一個對象。我們如何將它與局部計算屬性混合使用呢？通常，我們需要使用一個工具函數將多個對象合併為一個，以使我們可以將最終對象傳給 computed 屬性。但是自從有了對象展開運算符
+
+```js
+computed: {
+  localComputed () { /* ... */ },
+  // 使用對象展開運算符將此對象混入到外部對象中
+  ...mapState({
+    // ...
+  })
+}
+```
+
+
+
+
+

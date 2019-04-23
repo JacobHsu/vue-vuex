@@ -15,6 +15,11 @@
       "path": "state.html"
     },
     {
+      "text": "Getters",
+      "type": "link",
+      "path": "getters.html"
+    },
+    {
       "text": "SWAGGER",
       "type": "label"
     },

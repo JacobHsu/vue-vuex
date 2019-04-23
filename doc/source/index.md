@@ -1,7 +1,8 @@
 title: hexo-theme-doc-seed
 ---
 
-vuex [Installation](https://vuex.vuejs.org/installation.html)
+vuex [Installation](https://vuex.vuejs.org/installation.html)   
+[Scrimba](https://scrimba.com/) is a community of developers sharing knowledge through interactive coding screencasts.  
 
 # hexo-theme-doc-seed
 
