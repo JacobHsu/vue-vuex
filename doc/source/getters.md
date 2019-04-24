@@ -1,6 +1,8 @@
 title: Getter
 ---
 
+store 的計算屬性
+
 https://vuex.vuejs.org/zh/guide/getters.html
 
 Vuex 允許我們在 store 中定義`“getter”`（可以認為是 store 的計算屬性）。就像計算屬性一樣，getter 的返回值會根據它的依賴被緩存起來，且只有當它的依賴值發生了改變才會被重新計算。

@@ -25,6 +25,11 @@
       "path": "mutations.html"
     },
     {
+      "text": "Actions",
+      "type": "link",
+      "path": "actions.html"
+    },
+    {
       "text": "SWAGGER",
       "type": "label"
     },
