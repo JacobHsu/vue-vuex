@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    <title>Hello Vuex | Mutations </title>
+    <meta name="description" content>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <!-- fonts -->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Ubuntu:300,400,500,600,700" rel="stylesheet">
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="/vue-vuex/style/doc.css">
+
+    <!-- favicon -->
+    <link rel="icon" href="/vue-vuex/images/favicon.ico">
+
+    
+
+  </head>
+  <body>
+
+   <script>window.__INITIAL_STATE__ = {"page":{"title":"Mutations","path":"mutations.html"},"data":{"navigation":{"logo":{"text":"Hello Vuex","type":"link","path":"index.html"},"main":[{"text":"Core Concepts","type":"label"},{"text":"State","type":"link","path":"state.html"},{"text":"Getters","type":"link","path":"getters.html"},{"text":"Mutations","type":"link","path":"mutations.html"},{"text":"Actions","type":"link","path":"actions.html"},{"text":"Modules","type":"link","path":"modules.html"},{"text":"SWAGGER","type":"label"},{"text":"SUPPORT AND FEEDBACK","type":"label"},{"text":"Raise an Issue on Github","type":"link","path":"https://github.bus.zalan.do/stargate/hexo-stargate-doc-theme-seed/issues/new"}]}},"config":{"timezone":"UTC","root":"/vue-vuex/","time_format":"HH:mm:ss","theme":"../node_modules/hexo-theme-doc","theme_config":{"swagger_ui":{"version":2,"permalinks":true,"api_explorer":true,"download":"Download specification","show_extensions":false,"deep_linking":true,"display_operation_id":false,"doc_expansion":"none"},"search":{"skip":false,"background":false,"route":"/lunr.json"},"favicon":"images/favicon.ico"}}}</script>
+
+    <div id="react-navigation-root"><div class="doc-navigation" data-reactroot><nav class="doc-navbar"><a href="/vue-vuex/index.html" class="doc-navbar__logo"><img src="/vue-vuex/images/logo.png" class="doc-navbar__logo__img"><span class="doc-navbar__logo__text">Hello Vuex</span></a><i class="dc-icon dc-icon--close dc-icon--interactive doc-sidebar-close doc-navbar__sidebar-close doc-navbar__sidebar-close--desktop"></i><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-navbar__sidebar-toggle"></i></nav><nav class="doc-sidebar"><div class="doc-sidebar__vertical-menu"><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-sidebar-toggle--primary doc-sidebar__vertical-menu__item"></i><i class="dc-icon dc-icon--search dc-icon--interactive doc-sidebar__vertical-menu__item doc-sidebar__vertical-menu__item--primary"></i></div><div class="doc-sidebar-content"><div class="doc-sidebar__search-form"></div><ul class="doc-sidebar-list"></ul></div></nav></div></div>
+    <div class="doc-content">
+  <div class="dc-page">
+    <div class="dc-card">
+      <div id="react-search-results-root"></div>
+      <div id="page-content" class="doc-formatting">
+        <p>更改 Vuex 的 <code>store</code> 中的狀態的<strong>唯一方法是提交 <code>mutation</code></strong>。<br>在 Vuex 中，<code>mutation</code> 都是<strong>同步事務</strong>：處理異步操作，使用 <code>Action</code>。  </p>
+<p>Vuex 中的 mutation 非常類似於<strong>事件</strong>：每個 mutation 都有一個字符串的 <code>事件類型 (type)</code> 和 一個 <code>回調函數 (handler)</code>。這個回調函數就是我們實際進行狀態更改的地方，並且它會接受 state 作為第一個參數：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    count: <span class="number">1</span></span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    increment (state) &#123;</span><br><span class="line">      <span class="comment">// 變更狀態</span></span><br><span class="line">      state.count++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>你不能直接調用一個 <code>mutation handler</code>。這個選項更像是<strong>事件註冊</strong>：“當觸發一個類型為 increment 的 mutation 時，調用此函數。”要喚醒一個 mutation handler，你需要以相應的 type 調用 store.commit 方法：</p>
+<p><code>store.commit(&#39;increment&#39;)</code> </p>
+<p><a href="https://scrimba.com/p/pnyzgAP/ckMZp4HN" target="_blank" rel="noopener">https://scrimba.com/p/pnyzgAP/ckMZp4HN</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        count: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mutations: &#123;</span><br><span class="line">        increment (state) &#123;</span><br><span class="line">            state.count++</span><br><span class="line">        &#125;,</span><br><span class="line">        incrementBy (state, payload) &#123;</span><br><span class="line">            state.count += payload.amount</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">import</span> &#123; mapState &#125; <span class="keyword">from</span> <span class="string">'vuex'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123; </span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    store,</span><br><span class="line">    data: &#123;</span><br><span class="line">    &#125;,</span><br><span class="line">    computed: mapState([</span><br><span class="line">        <span class="string">'count'</span></span><br><span class="line">    ]),</span><br><span class="line">    methods: &#123;</span><br><span class="line">        <span class="comment">// &lt;button @click='increment'&gt;+&lt;/button&gt;</span></span><br><span class="line">        increment () &#123;</span><br><span class="line">            <span class="keyword">this</span>.$store.commit(<span class="string">'increment'</span>)  <span class="comment">// call mutations increment </span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">store.commit(<span class="string">'increment'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(store.state.count); <span class="comment">//-&gt; 1</span></span><br><span class="line">store.commit(<span class="string">'incrementBy'</span>, &#123; <span class="attr">amount</span>: <span class="number">29</span> &#125;);</span><br><span class="line"><span class="built_in">console</span>.log(store.state.count); <span class="comment">//-&gt; 29</span></span><br><span class="line"></span><br><span class="line">store.commit(&#123;</span><br><span class="line">    type: <span class="string">'incrementBy'</span>,</span><br><span class="line">    amount: <span class="number">40</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(store.state.count); <span class="comment">//-&gt; 40</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="mapMutations"><a href="#mapMutations" class="headerlink" title="mapMutations"></a>mapMutations</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; mapState, mapMutations &#125; <span class="keyword">from</span> <span class="string">'vuex'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123; </span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    store,</span><br><span class="line">    data: &#123;</span><br><span class="line">    &#125;,</span><br><span class="line">    computed: mapState([</span><br><span class="line">        <span class="string">'count'</span></span><br><span class="line">    ]),</span><br><span class="line">    <span class="comment">// 可將 increment incrementBy 放置store/index.js vuex中呼叫</span></span><br><span class="line">    methods: mapMutations([</span><br><span class="line">        <span class="string">'increment'</span>,</span><br><span class="line">        <span class="string">'incrementBy'</span></span><br><span class="line">    ])</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="提交載荷（Payload）"><a href="#提交載荷（Payload）" class="headerlink" title="提交載荷（Payload）"></a>提交載荷（Payload）</h2><p>你可以向 <code>store.commit</code> 傳入額外的參數，即 mutation 的 載荷（<code>payload</code>）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line">mutations: &#123;</span><br><span class="line">  increment (state, n) &#123;</span><br><span class="line">    state.count += n</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>store.commit(&#39;increment&#39;, 10) //額外的參數 n</code>  </p>
+<p>在大多數情況下，載荷應該是一個<strong>對象</strong>，這樣可以包含多個字段並且記錄的 mutation 會更易讀：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line">mutations: &#123;</span><br><span class="line">  increment (state, payload) &#123;</span><br><span class="line">    state.count += payload.amount</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">store.commit(<span class="string">'increment'</span>, &#123;</span><br><span class="line">  amount: <span class="number">10</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>payload <code>{amount: 10}</code> </p>
+<p>提交方式 包含 <code>type</code></p>
+<p>提交 <code>mutation</code> 的另一種方式是直接使用包含 type 屬性的對象：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">store.commit(&#123;</span><br><span class="line">  type: <span class="string">'increment'</span>,</span><br><span class="line">  amount: <span class="number">10</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>當使用對象風格的提交方式，整個對象都作為載荷傳給 mutation 函數，因此 handler 保持不變：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mutations: &#123;</span><br><span class="line">  increment (state, payload) &#123;</span><br><span class="line">    state.count += payload.amount</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Mutation-需遵守-Vue-的響應規則"><a href="#Mutation-需遵守-Vue-的響應規則" class="headerlink" title="Mutation 需遵守 Vue 的響應規則"></a>Mutation 需遵守 Vue 的響應規則</h2><p>既然 Vuex 的 store 中的狀態是響應式的，那麼當我們變更狀態時，監視狀態的 Vue 組件也會自動更新。這也意味著 Vuex 中的 mutation 也需要與使用 Vue 一樣遵守一些注意事項：</p>
+<ol>
+<li><p>最好提前在你的 store 中初始化好所有所需屬性。</p>
+</li>
+<li><p>當需要在對象上添加新屬性時，你應該<br><code>Vue.set(obj, &#39;newProp&#39;, 123)</code> or<br><code>state.obj = { ...state.obj, newProp: 123 }</code>  以新對象替換老對象。例如利用對象展開運算符</p>
+</li>
+</ol>
+<blockquote>
+<p>! Mutation 必須是同步函數 Mutation 必須是同步函數 Mutation 必須是同步函數 </p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mutations: &#123;</span><br><span class="line">  someMutation (state) &#123;</span><br><span class="line">    <span class="comment">// 異步</span></span><br><span class="line">    api.callAsyncMethod(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      state.count++</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="在組件中提交-Mutation"><a href="#在組件中提交-Mutation" class="headerlink" title="在組件中提交 Mutation"></a>在組件中提交 Mutation</h1><p>在組件中使用 <code>this.$store.commit(&#39;xxx&#39;)</code> 提交 <code>mutation</code></p>
+<p>或者</p>
+<p>使用 <code>mapMutations 輔助函數</code>將組件中的 <code>methods</code> 映射為 <code>store.commit</code> 調用（需要在根節點注入 <code>store</code>）</p>
+
+        <div id="react-support-footer-root"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+
+    
+
+    <!-- js vendors -->
+    <script src="//code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/2.1.0/lunr.min.js"></script>
+
+    <!-- js source  -->
+    <script src="/vue-vuex/script/doc.js"></script>
+
+    
+
+  </body>
+</html>

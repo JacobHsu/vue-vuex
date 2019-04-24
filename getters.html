@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    <title>Hello Vuex | Getter </title>
+    <meta name="description" content>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <!-- fonts -->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Ubuntu:300,400,500,600,700" rel="stylesheet">
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="/vue-vuex/style/doc.css">
+
+    <!-- favicon -->
+    <link rel="icon" href="/vue-vuex/images/favicon.ico">
+
+    
+
+  </head>
+  <body>
+
+   <script>window.__INITIAL_STATE__ = {"page":{"title":"Getter","path":"getters.html"},"data":{"navigation":{"logo":{"text":"Hello Vuex","type":"link","path":"index.html"},"main":[{"text":"Core Concepts","type":"label"},{"text":"State","type":"link","path":"state.html"},{"text":"Getters","type":"link","path":"getters.html"},{"text":"Mutations","type":"link","path":"mutations.html"},{"text":"Actions","type":"link","path":"actions.html"},{"text":"Modules","type":"link","path":"modules.html"},{"text":"SWAGGER","type":"label"},{"text":"SUPPORT AND FEEDBACK","type":"label"},{"text":"Raise an Issue on Github","type":"link","path":"https://github.bus.zalan.do/stargate/hexo-stargate-doc-theme-seed/issues/new"}]}},"config":{"timezone":"UTC","root":"/vue-vuex/","time_format":"HH:mm:ss","theme":"../node_modules/hexo-theme-doc","theme_config":{"swagger_ui":{"version":2,"permalinks":true,"api_explorer":true,"download":"Download specification","show_extensions":false,"deep_linking":true,"display_operation_id":false,"doc_expansion":"none"},"search":{"skip":false,"background":false,"route":"/lunr.json"},"favicon":"images/favicon.ico"}}}</script>
+
+    <div id="react-navigation-root"><div class="doc-navigation" data-reactroot><nav class="doc-navbar"><a href="/vue-vuex/index.html" class="doc-navbar__logo"><img src="/vue-vuex/images/logo.png" class="doc-navbar__logo__img"><span class="doc-navbar__logo__text">Hello Vuex</span></a><i class="dc-icon dc-icon--close dc-icon--interactive doc-sidebar-close doc-navbar__sidebar-close doc-navbar__sidebar-close--desktop"></i><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-navbar__sidebar-toggle"></i></nav><nav class="doc-sidebar"><div class="doc-sidebar__vertical-menu"><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-sidebar-toggle--primary doc-sidebar__vertical-menu__item"></i><i class="dc-icon dc-icon--search dc-icon--interactive doc-sidebar__vertical-menu__item doc-sidebar__vertical-menu__item--primary"></i></div><div class="doc-sidebar-content"><div class="doc-sidebar__search-form"></div><ul class="doc-sidebar-list"></ul></div></nav></div></div>
+    <div class="doc-content">
+  <div class="dc-page">
+    <div class="dc-card">
+      <div id="react-search-results-root"></div>
+      <div id="page-content" class="doc-formatting">
+        <p>store 的計算屬性</p>
+<p><a href="https://vuex.vuejs.org/zh/guide/getters.html" target="_blank" rel="noopener">https://vuex.vuejs.org/zh/guide/getters.html</a></p>
+<p>Vuex 允許我們在 store 中定義<code>“getter”</code>（可以認為是 store 的計算屬性）。就像計算屬性一樣，getter 的返回值會根據它的依賴被緩存起來，且只有當它的依賴值發生了改變才會被重新計算。</p>
+<p>Vuex | <a href="https://scrimba.com/p/pnyzgAP/c2Be7TB" target="_blank" rel="noopener">Getters</a>  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">   state: &#123;</span><br><span class="line">       todos: [</span><br><span class="line">           &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">text</span>: <span class="string">'...'</span>, <span class="attr">done</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">           &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">text</span>: <span class="string">'...'</span>, <span class="attr">done</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">       ]</span><br><span class="line">   &#125;,</span><br><span class="line">   getters: &#123;</span><br><span class="line">       <span class="comment">// Getter 接受 state 作為其第一個參數</span></span><br><span class="line">       doneTodos: <span class="function"><span class="params">state</span> =&gt;</span> &#123;</span><br><span class="line">           <span class="keyword">return</span> state.todos.filter(<span class="function"><span class="params">todo</span> =&gt;</span> todo.done);</span><br><span class="line">       &#125;,</span><br><span class="line">       <span class="comment">// Getter 也可以接受其他 getter 作為第二個參數</span></span><br><span class="line">       doneTodosCount: <span class="function">(<span class="params">state, getters</span>) =&gt;</span> &#123;</span><br><span class="line">           <span class="keyword">return</span> getters.doneTodos.length</span><br><span class="line">       &#125;,</span><br><span class="line">       <span class="comment">// 通過方法訪問 通過讓 getter 返回一個函數，來實現給 getter 傳參</span></span><br><span class="line">       getTodoById: <span class="function">(<span class="params">state</span>) =&gt;</span> (id) =&gt; &#123;</span><br><span class="line">           <span class="keyword">return</span> state.todos.find(<span class="function"><span class="params">todo</span> =&gt;</span> todo.id === id)</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123; </span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    store,</span><br><span class="line">    data: &#123;</span><br><span class="line">    &#125;,</span><br><span class="line">    computed: &#123;</span><br><span class="line">        <span class="comment">// 可以很容易地在任何組件中使用它</span></span><br><span class="line">        doneTodosCount () &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.$store.getters.doneTodosCount <span class="comment">//1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Getter 會暴露為 store.getters 對象，你可以以屬性的形式訪問這些值</span></span><br><span class="line"><span class="built_in">console</span>.log(store.getters.doneTodos )  <span class="comment">// -&gt; [&#123; id: 1, text: '...', done: true &#125;]</span></span><br><span class="line"><span class="built_in">console</span>.log(store.getters.getTodoById(<span class="number">2</span>)) <span class="comment">//&#123;id: 2, text: "...", done: false&#125;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，getter 在通過屬性訪問時是作為 Vue 的響應式系統的一部分緩存其中的。</p>
+</blockquote>
+<h1 id="mapGetters-輔助函數"><a href="#mapGetters-輔助函數" class="headerlink" title="mapGetters  輔助函數"></a>mapGetters  輔助函數</h1><p><code>mapGetters</code> 輔助函數僅僅是將 store 中的 getter 映射到局部計算屬性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; mapGetters &#125; <span class="keyword">from</span> <span class="string">'vuex'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123; </span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    store,</span><br><span class="line">    data: &#123;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// // 使用對象展開運算符將 getter 混入 computed 對象中</span></span><br><span class="line">    computed: mapGetters([</span><br><span class="line">        <span class="string">'doneTodos'</span>, <span class="string">'doneTodosCount'</span>, <span class="string">'getTodoById'</span></span><br><span class="line">    ])</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+        <div id="react-support-footer-root"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+
+    
+
+    <!-- js vendors -->
+    <script src="//code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/2.1.0/lunr.min.js"></script>
+
+    <!-- js source  -->
+    <script src="/vue-vuex/script/doc.js"></script>
+
+    
+
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    <title>Hello Vuex | State </title>
+    <meta name="description" content>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <!-- fonts -->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Ubuntu:300,400,500,600,700" rel="stylesheet">
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="/vue-vuex/style/doc.css">
+
+    <!-- favicon -->
+    <link rel="icon" href="/vue-vuex/images/favicon.ico">
+
+    
+
+  </head>
+  <body>
+
+   <script>window.__INITIAL_STATE__ = {"page":{"title":"State","path":"state.html"},"data":{"navigation":{"logo":{"text":"Hello Vuex","type":"link","path":"index.html"},"main":[{"text":"Core Concepts","type":"label"},{"text":"State","type":"link","path":"state.html"},{"text":"Getters","type":"link","path":"getters.html"},{"text":"Mutations","type":"link","path":"mutations.html"},{"text":"Actions","type":"link","path":"actions.html"},{"text":"Modules","type":"link","path":"modules.html"},{"text":"SWAGGER","type":"label"},{"text":"SUPPORT AND FEEDBACK","type":"label"},{"text":"Raise an Issue on Github","type":"link","path":"https://github.bus.zalan.do/stargate/hexo-stargate-doc-theme-seed/issues/new"}]}},"config":{"timezone":"UTC","root":"/vue-vuex/","time_format":"HH:mm:ss","theme":"../node_modules/hexo-theme-doc","theme_config":{"swagger_ui":{"version":2,"permalinks":true,"api_explorer":true,"download":"Download specification","show_extensions":false,"deep_linking":true,"display_operation_id":false,"doc_expansion":"none"},"search":{"skip":false,"background":false,"route":"/lunr.json"},"favicon":"images/favicon.ico"}}}</script>
+
+    <div id="react-navigation-root"><div class="doc-navigation" data-reactroot><nav class="doc-navbar"><a href="/vue-vuex/index.html" class="doc-navbar__logo"><img src="/vue-vuex/images/logo.png" class="doc-navbar__logo__img"><span class="doc-navbar__logo__text">Hello Vuex</span></a><i class="dc-icon dc-icon--close dc-icon--interactive doc-sidebar-close doc-navbar__sidebar-close doc-navbar__sidebar-close--desktop"></i><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-navbar__sidebar-toggle"></i></nav><nav class="doc-sidebar"><div class="doc-sidebar__vertical-menu"><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-sidebar-toggle--primary doc-sidebar__vertical-menu__item"></i><i class="dc-icon dc-icon--search dc-icon--interactive doc-sidebar__vertical-menu__item doc-sidebar__vertical-menu__item--primary"></i></div><div class="doc-sidebar-content"><div class="doc-sidebar__search-form"></div><ul class="doc-sidebar-list"></ul></div></nav></div></div>
+    <div class="doc-content">
+  <div class="dc-page">
+    <div class="dc-card">
+      <div id="react-search-results-root"></div>
+      <div id="page-content" class="doc-formatting">
+        <p>Vuex 使用<strong>單一狀態樹</strong>——是的，用一個對象就包含了全部的應用層級狀態。至此它便作為一個“唯一數據源 (SSOT)”而存在。這也意味著，每個應用將僅僅包含一個 store 實例。單一狀態樹讓我們能夠直接地定位任一特定的狀態片段，在調試的過程中也能輕易地取得整個當前應用狀態的快照。</p>
+<h1 id="在-Vue-組件中獲得-Vuex-狀態"><a href="#在-Vue-組件中獲得-Vuex-狀態" class="headerlink" title="在 Vue 組件中獲得 Vuex 狀態"></a>在 Vue 組件中獲得 Vuex 狀態</h1><p>那麼我們如何在 Vue 組件中展示狀態呢？<br>由於 Vuex 的狀態存儲是響應式的，從 store 實例中讀取狀態最簡單的方法就是在<code>計算屬性computed</code>中返回某個狀態</p>
+<p><a href="https://jsbin.com/qocogojose/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/qocogojose/edit?html,output</a><br><a href="https://jsbin.com/muxodoziba/edit?html,js,output" target="_blank" rel="noopener">https://jsbin.com/muxodoziba/edit?html,js,output</a></p>
+<p>Vuex 通過 <code>store</code> 選項，提供了一種機制將狀態從根組件“注入”到每一個子組件中（需調用 <code>Vue.use(Vuex)</code>）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  <span class="comment">// 把 store 对象提供给 “store” 选项，这可以把 store 的实例注入所有的子组件</span></span><br><span class="line">  store,</span><br><span class="line">  components: &#123; Counter &#125;,</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div class="app"&gt;</span></span><br><span class="line"><span class="string">      &lt;counter&gt;&lt;/counter&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>通過在根實例中註冊 <code>store</code> 選項，該 store 實例會注入到根組件下的所有子組件中，且子組件能通過 <code>this.$store</code> 訪問到。讓我們更新下 Counter 的實現：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Counter = &#123;</span><br><span class="line">  template: <span class="string">`&lt;div&gt;&#123;&#123; count &#125;&#125;&lt;/div&gt;`</span>,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    count () &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.count</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="mapState-輔助函數"><a href="#mapState-輔助函數" class="headerlink" title="mapState 輔助函數"></a>mapState 輔助函數</h1><p>當一個組件需要獲取多個狀態時候，將這些狀態都聲明為計算屬性會有些重複和冗餘。為瞭解決這個問題，我們可以使用 <code>mapState</code> 輔助函數幫助我們生成計算屬性，讓你少按幾次鍵：</p>
+<p><a href="https://scrimba.com/c/c6g8R6f9" target="_blank" rel="noopener">https://scrimba.com/c/c6g8R6f9</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        count: <span class="number">3</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; mapState &#125; <span class="keyword">from</span> <span class="string">'vuex'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123; </span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    store,</span><br><span class="line">    data: &#123;</span><br><span class="line">        localCount: <span class="number">4</span></span><br><span class="line">    &#125;,</span><br><span class="line">    computed: mapState([</span><br><span class="line">        <span class="string">'count'</span></span><br><span class="line">    ])</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>##　對象展開運算符</p>
+<p><code>mapState</code> 函數返回的是一個對象。我們如何將它與局部計算屬性混合使用呢？通常，我們需要使用一個工具函數將多個對象合併為一個，以使我們可以將最終對象傳給 computed 屬性。但是自從有了對象展開運算符</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  localComputed () &#123; <span class="comment">/* ... */</span> &#125;,</span><br><span class="line">  <span class="comment">// 使用對象展開運算符將此對象混入到外部對象中</span></span><br><span class="line">  ...mapState(&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        <div id="react-support-footer-root"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+
+    
+
+    <!-- js vendors -->
+    <script src="//code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/2.1.0/lunr.min.js"></script>
+
+    <!-- js source  -->
+    <script src="/vue-vuex/script/doc.js"></script>
+
+    
+
+  </body>
+</html>
