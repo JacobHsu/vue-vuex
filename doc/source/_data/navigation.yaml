@@ -20,6 +20,11 @@
       "path": "getters.html"
     },
     {
+      "text": "Mutations",
+      "type": "link",
+      "path": "mutations.html"
+    },
+    {
       "text": "SWAGGER",
       "type": "label"
     },
