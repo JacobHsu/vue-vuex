@@ -4,7 +4,10 @@ title: Actions
 Action 類似於 mutation，不同在於：
 
 Action 提交的是 `mutation`，而不是直接變更狀態。
-Action 可以包含任意異步操作。 (因此**api操作**要放actions)
+Action 可以包含任意異步操作。 (因此**api操作**要放actions) 
+
+分發 Action 透過 `dispatch`  
+
 讓我們來註冊一個簡單的 action：
 
 ```js

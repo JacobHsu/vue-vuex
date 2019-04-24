@@ -30,6 +30,11 @@
       "path": "actions.html"
     },
     {
+      "text": "Modules",
+      "type": "link",
+      "path": "modules.html"
+    },
+    {
       "text": "SWAGGER",
       "type": "label"
     },
