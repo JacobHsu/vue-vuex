@@ -79,8 +79,9 @@ doc\source\_data \navigation.yaml
 ### debug 
 The tag swagger_to_html on line 6 in `swagger/to-html.md` is not a recognized Liquid tag. 
 
-移除 github 不支持的特殊語法  
+移除 github 不支持的特殊語法   to-html.md & ui.md
 
+移除 public 資料夾 `hexo g` 重 generate  
 
 ### References
 
