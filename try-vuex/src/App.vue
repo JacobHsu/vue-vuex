@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <button @click="increment">加{{count}}</button> 
+    state.a.count={{a}} , state.b.subModule.count={{b}} <br>
+    <button>加{{count}}</button> 
   </div>
 </template>
 
@@ -17,17 +18,14 @@ export default {
   created() {
     console.log('created...',this.msg)
   },
-  methods:{ 
-    increment() { 
-      this.$store.dispatch('incrementsync').then(() => { 
-        console.log('then'); 
-      }); 
-    } 
-  }, 
-  computed:
-    mapState({ // mapState相當於對映 
+  computed: mapState({ // mapState相當於對映
+      a: state => state.a.count,
+      b: state => state.b.subModule.count,
       count: 'numb', //這邊的意思是mapState把'numb'的值對映給了count，所以count等於10086 
-    })
+  })//,
+  //methods: mapActions('some/nested/module',[
+      //'foo' //this.foo this['some/nested/module/foo']() some is module in store / foo is a action
+  //])
 
 }
 </script>

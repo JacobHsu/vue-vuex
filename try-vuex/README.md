@@ -1,5 +1,10 @@
 # try-vuex
 
+commit -> mutations   更改 Vuex 的 store 中的狀態
+dispatch -> actions   提交的是 mutation，而不是直接變更狀態  (異步操作)  
+getters -> getters 派生出一些狀態
+
+
 安装 `npm install vuex --save`
 
 `store` directory index.js  
