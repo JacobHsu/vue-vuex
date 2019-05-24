@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    <title>Hello Vuex | QA </title>
+    <meta name="description" content>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+
+    <!-- fonts -->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Ubuntu:300,400,500,600,700" rel="stylesheet">
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="/vue-vuex/style/doc.css">
+
+    <!-- favicon -->
+    <link rel="icon" href="/vue-vuex/images/favicon.ico">
+
+    
+
+  </head>
+  <body>
+
+   <script>window.__INITIAL_STATE__ = {"page":{"title":"QA","path":"q.html"},"data":{"navigation":{"logo":{"text":"Hello Vuex","type":"link","path":"index.html"},"main":[{"text":"Core Concepts","type":"label"},{"text":"State","type":"link","path":"state.html"},{"text":"Getters","type":"link","path":"getters.html"},{"text":"Mutations","type":"link","path":"mutations.html"},{"text":"Actions","type":"link","path":"actions.html"},{"text":"Modules","type":"link","path":"modules.html"},{"text":"QA","type":"link","path":"q.html"},{"text":"SWAGGER","type":"label"},{"text":"SUPPORT AND FEEDBACK","type":"label"},{"text":"Raise an Issue on Github","type":"link","path":"https://github.bus.zalan.do/stargate/hexo-stargate-doc-theme-seed/issues/new"}]}},"config":{"timezone":"UTC","root":"/vue-vuex/","time_format":"HH:mm:ss","theme":"../node_modules/hexo-theme-doc","theme_config":{"swagger_ui":{"version":2,"permalinks":true,"api_explorer":true,"download":"Download specification","show_extensions":false,"deep_linking":true,"display_operation_id":false,"doc_expansion":"none"},"search":{"skip":false,"background":false,"route":"/lunr.json"},"favicon":"images/favicon.ico"}}}</script>
+
+    <div id="react-navigation-root"><div class="doc-navigation" data-reactroot><nav class="doc-navbar"><a href="/vue-vuex/index.html" class="doc-navbar__logo"><img src="/vue-vuex/images/logo.png" class="doc-navbar__logo__img"><span class="doc-navbar__logo__text">Hello Vuex</span></a><i class="dc-icon dc-icon--close dc-icon--interactive doc-sidebar-close doc-navbar__sidebar-close doc-navbar__sidebar-close--desktop"></i><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-navbar__sidebar-toggle"></i></nav><nav class="doc-sidebar"><div class="doc-sidebar__vertical-menu"><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-sidebar-toggle--primary doc-sidebar__vertical-menu__item"></i><i class="dc-icon dc-icon--search dc-icon--interactive doc-sidebar__vertical-menu__item doc-sidebar__vertical-menu__item--primary"></i></div><div class="doc-sidebar-content"><div class="doc-sidebar__search-form"></div><ul class="doc-sidebar-list"></ul></div></nav></div></div>
+    <div class="doc-content">
+  <div class="dc-page">
+    <div class="dc-card">
+      <div id="react-search-results-root"></div>
+      <div id="page-content" class="doc-formatting">
+        <p>在初始化項目時有個選項Use ESLint to lint your code? (Y/n)<br>如果選擇是yes,則有可能在你寫.vue文件的js <code>console.log</code>時會報錯  </p>
+<p>這個錯誤因為你設置了eslint，但你的js代碼不規範的原因<br>可以重新初始化關掉eslint。</p>
+<p>Use /<em> eslint-disable </em>/ to ignore all warnings in a file.</p>
+<p><a href="https://stackoverflow.com/questions/49121110/how-to-disable-eslint-on-vue-cli-3" target="_blank" rel="noopener">How to disable eslint on vue-cli 3?</a></p>
+<p>You can remove the eslint rule by adding a <code>vue.config.js</code> file to your project with the following content.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    chainWebpack: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">        config.module.rules.delete(<span class="string">'eslint'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        <div id="react-support-footer-root"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+
+    
+
+    <!-- js vendors -->
+    <script src="//code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lunr.js/2.1.0/lunr.min.js"></script>
+
+    <!-- js source  -->
+    <script src="/vue-vuex/script/doc.js"></script>
+
+    
+
+  </body>
+</html>
