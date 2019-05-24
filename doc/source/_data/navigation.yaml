@@ -35,6 +35,11 @@
       "path": "modules.html"
     },
     {
+      "text": "QA",
+      "type": "link",
+      "path": "q.html"
+    },
+    {
       "text": "SWAGGER",
       "type": "label"
     },

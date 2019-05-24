@@ -5,8 +5,7 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import {mapState,mapActions} from 'vuex' 
+import {mapState} from 'vuex' 
 
 export default {
   name: 'app',
@@ -15,6 +14,9 @@ export default {
       msg: 'Welcome to Your Vue.js App' 
     } 
   }, 
+  created() {
+    console.log('created...',this.msg)
+  },
   methods:{ 
     increment() { 
       this.$store.dispatch('incrementsync').then(() => { 
@@ -25,10 +27,8 @@ export default {
   computed:
     mapState({ // mapState相當於對映 
       count: 'numb', //這邊的意思是mapState把'numb'的值對映給了count，所以count等於10086 
-    }),
-  components: {
-    HelloWorld
-  }
+    })
+
 }
 </script>
 

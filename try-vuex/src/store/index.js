@@ -3,7 +3,42 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+const moduleA = {
+    state: { 
+        count: 3
+    },
+    mutations: {
+        
+    },
+    getters: {
+        
+    },
+    actions: {
+        
+    }
+}
+
+
+const moduleB = {
+    state: {
+        count: 8
+    },
+    mutations: {
+        
+    },
+    getters: {
+        
+    },
+    actions: {
+        
+    }
+}
+
 const store = new Vuex.Store({
+    modules: {
+        a: moduleA,
+        b: moduleB
+    },
     state: {
         count: 10,
         numb: 10086
@@ -26,5 +61,7 @@ const store = new Vuex.Store({
     }
 }); 
 
+console.log(store.state.a.count); //3
+console.log(store.state.b.count); //8
 
 export default store; 
