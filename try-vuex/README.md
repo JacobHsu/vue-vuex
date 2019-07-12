@@ -13,6 +13,14 @@ getters -> getters 派生出一些狀態
 [詳解vuex中mapState,mapGetters,mapMutations,mapActions的作用](https://codertw.com/前端開發/203146/)  
 map其實就是一個在store檔案中的對映而已，就是不用讓你要呼叫一個值需要敲這麼多程式碼
 
+## vuex-persistedstate  
+
+[vuex-persistedstate](https://www.npmjs.com/package/vuex-persistedstate) - npm
+[Vuex持久化插件-解决刷新数据消失的问题](https://juejin.im/post/5b62999fe51d4519610e336e)  
+> Local Storage   
+key: vuex
+value: {"count":2,"numb":10086,"a":{"count":4},"b":{"count":8,"subModule":{"count":101}}}
+
 ## Project setup
 ```
 npm install

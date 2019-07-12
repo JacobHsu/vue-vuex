@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import createPersistedState from "vuex-persistedstate"
 Vue.use(Vuex)
 
 const moduleA = {
@@ -100,7 +100,8 @@ const store = new Vuex.Store({
         actionA({ dispatch, commit }) {
             return commit('add');
         },
-    }
+    },
+    plugins: [createPersistedState()]
 }); 
 
 // --- a ---
